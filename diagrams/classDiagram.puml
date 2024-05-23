@@ -1,0 +1,97 @@
+@startuml
+
+interface Expression {
+    +evaluate(): Double
+    +evaluate(values: Map<String, Double>): Double
+    +toString(): String
+    +getVariables(): Set<String>
+}
+
+class EvaluateExpression {
+    evaluate(expression: Expression): Double
+}
+
+class Variable extends Expression {
+    -name: String
+    +evaluate(): Double
+    +evaluate(values: Map<String, Double>): Double
+    +toString(): String
+    +getVariables(): Set<String>
+}
+
+abstract class BinaryOperation extends Expression {
+    -left: Expression
+    -right: Expression
+    +evaluate(): Double
+    +evaluate(values: Map<String, Double>): Double
+    +toString(): String
+    +getVariables(): Set<String>
+}
+
+class Addition extends BinaryOperation {
+    +evaluate(): Double
+    +evaluate(values: Map<String, Double>): Double
+    +toString(): String
+    +getVariables(): Set<String>
+}
+
+class Subtraction extends BinaryOperation {
+    +evaluate(): Double
+    +evaluate(values: Map<String, Double>): Double
+    +toString(): String
+    +getVariables(): Set<String>
+}
+
+class Multiplication extends BinaryOperation {
+    +evaluate(): Double
+    +evaluate(values: Map<String, Double>): Double
+    +toString(): String
+    +getVariables(): Set<String>
+}
+
+class Division extends BinaryOperation {
+    +evaluate(): Double
+    +evaluate(values: Map<String, Double>): Double
+    +toString(): String
+    +getVariables(): Set<String>
+}
+
+class Power extends BinaryOperation {
+    +evaluate(): Double
+    +evaluate(values: Map<String, Double>): Double
+    +toString(): String
+    +getVariables(): Set<String>
+}
+
+class Module extends BinaryOperation {
+    +evaluate(): Double
+    +evaluate(values: Map<String, Double>): Double
+    +toString(): String
+    +getVariables(): Set<String>
+}
+
+abstract class UnaryOperation extends Expression {
+    -operand: Expression
+    +evaluate(): Double
+    +evaluate(values: Map<String, Double>): Double
+    +toString(): String
+    +getVariables(): Set<String>
+}
+
+class Sqrt extends UnaryOperation {
+    +evaluate(): Double
+    +evaluate(values: Map<String, Double>): Double
+    +toString(): String
+    +getVariables(): Set<String>
+}
+
+class Constant extends Expression {
+    -value: Double
+    +evaluate(): Double
+    +evaluate(values: Map<String, Double>): Double
+    +toString(): String
+    +getVariables(): Set<String>
+}
+
+
+@enduml
