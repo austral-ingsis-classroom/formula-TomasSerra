@@ -1,22 +1,23 @@
 @startuml
 
 interface Expression {
-    +evaluate(): Double
     +evaluate(values: Map<String, Double>): Double
     +toString(): String
     +getVariables(): Set<String>
 }
 
-class Variable extends Expression {
+class Variable implements Expression {
     -name: String
     +evaluate(values: Map<String, Double>): Double
     +toString(): String
     +getVariables(): Set<String>
 }
 
-abstract class BinaryOperation extends Expression {
+abstract class BinaryOperation implements Expression {
     -left: Expression
     -right: Expression
+    +getRight(): Expression
+    +getLeft(): Expression
     +evaluate(values: Map<String, Double>): Double
     +toString(): String
     +getVariables(): Set<String>
@@ -25,41 +26,36 @@ abstract class BinaryOperation extends Expression {
 class Addition extends BinaryOperation {
     +evaluate(values: Map<String, Double>): Double
     +toString(): String
-    +getVariables(): Set<String>
 }
 
 class Subtraction extends BinaryOperation {
     +evaluate(values: Map<String, Double>): Double
     +toString(): String
-    +getVariables(): Set<String>
 }
 
 class Multiplication extends BinaryOperation {
     +evaluate(values: Map<String, Double>): Double
     +toString(): String
-    +getVariables(): Set<String>
 }
 
 class Division extends BinaryOperation {
     +evaluate(values: Map<String, Double>): Double
     +toString(): String
-    +getVariables(): Set<String>
 }
 
 class Power extends BinaryOperation {
     +evaluate(values: Map<String, Double>): Double
     +toString(): String
-    +getVariables(): Set<String>
 }
 
-class Module extends BinaryOperation {
+class Module extends UnaryOperation {
     +evaluate(values: Map<String, Double>): Double
     +toString(): String
-    +getVariables(): Set<String>
 }
 
-abstract class UnaryOperation extends Expression {
-    -operand: Expression
+abstract class UnaryOperation implements Expression {
+    -expression: Expression
+    +getExpression(): Expression
     +evaluate(values: Map<String, Double>): Double
     +toString(): String
     +getVariables(): Set<String>
@@ -68,14 +64,18 @@ abstract class UnaryOperation extends Expression {
 class Sqrt extends UnaryOperation {
     +evaluate(values: Map<String, Double>): Double
     +toString(): String
-    +getVariables(): Set<String>
 }
 
-class Constant extends Expression {
+class Parenthesis extends UnaryOperation {
+    +evaluate(values: Map<String, Double>): Double
+    +toString(): String
+}
+
+class Constant implements Expression {
     -value: Double
     +evaluate(values: Map<String, Double>): Double
     +toString(): String
-    +getVariables(): Set<String>
+    -isInteger(): boolean
 }
 
 
