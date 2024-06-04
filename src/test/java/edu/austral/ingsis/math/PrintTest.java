@@ -1,15 +1,11 @@
 package edu.austral.ingsis.math;
 
+import edu.austral.ingsis.math.expressions.Constant;
 import edu.austral.ingsis.math.expressions.Variable;
 import edu.austral.ingsis.math.expressions.binaryoperation.*;
 import edu.austral.ingsis.math.expressions.unaryoperation.Module;
 import edu.austral.ingsis.math.expressions.unaryoperation.Parenthesis;
 import org.junit.jupiter.api.*;
-
-
-import edu.austral.ingsis.math.expressions.Constant;
-
-import java.util.HashMap;
 
 public class PrintTest {
 
@@ -35,7 +31,9 @@ public class PrintTest {
   @Test
   public void shouldPrintFunction3() {
     final String expected = "(9 / 2) * 3";
-    Expression expression = new Multiplication(new Parenthesis(new Division(new Constant(9), new Constant(2))), new Constant(3));
+    Expression expression =
+        new Multiplication(
+            new Parenthesis(new Division(new Constant(9), new Constant(2))), new Constant(3));
 
     Assertions.assertEquals(expected, expression.toString());
   }
@@ -44,7 +42,9 @@ public class PrintTest {
   @Test
   public void shouldPrintFunction4() {
     final String expected = "(27 / 6) ^ 2";
-    Expression expression = new Power(new Parenthesis(new Division(new Constant(27), new Constant(6))), new Constant(2));
+    Expression expression =
+        new Power(
+            new Parenthesis(new Division(new Constant(27), new Constant(6))), new Constant(2));
 
     Assertions.assertEquals(expected, expression.toString());
   }
@@ -62,7 +62,9 @@ public class PrintTest {
   @Test
   public void shouldPrintFunction8() {
     final String expected = "(5 - i) * 8";
-    Expression expression = new Multiplication(new Parenthesis(new Substraction(new Constant(5), new Variable("i"))), new Constant(8));
+    Expression expression =
+        new Multiplication(
+            new Parenthesis(new Substraction(new Constant(5), new Variable("i"))), new Constant(8));
 
     Assertions.assertEquals(expected, expression.toString());
   }

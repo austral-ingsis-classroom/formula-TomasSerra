@@ -5,10 +5,8 @@ import edu.austral.ingsis.math.expressions.Variable;
 import edu.austral.ingsis.math.expressions.binaryoperation.*;
 import edu.austral.ingsis.math.expressions.unaryoperation.Module;
 import edu.austral.ingsis.math.expressions.unaryoperation.Parenthesis;
-import org.junit.jupiter.api.*;
-
 import java.util.Set;
-
+import org.junit.jupiter.api.*;
 
 public class ListVariablesTest {
 
@@ -34,7 +32,9 @@ public class ListVariablesTest {
   @Test
   public void shouldListVariablesFunction3() {
     final Set<String> result = Set.of("x", "y");
-    Expression expression = new Multiplication(new Parenthesis(new Division(new Constant(9), new Variable("x"))), new Variable("y"));
+    Expression expression =
+        new Multiplication(
+            new Parenthesis(new Division(new Constant(9), new Variable("x"))), new Variable("y"));
 
     Assertions.assertEquals(result, expression.getVariables());
   }
@@ -43,7 +43,9 @@ public class ListVariablesTest {
   @Test
   public void shouldListVariablesFunction4() {
     final Set<String> result = Set.of("a", "b");
-    Expression expression = new Power(new Parenthesis(new Division(new Constant(27), new Variable("a"))), new Variable("b"));
+    Expression expression =
+        new Power(
+            new Parenthesis(new Division(new Constant(27), new Variable("a"))), new Variable("b"));
 
     Assertions.assertEquals(result, expression.getVariables());
   }
@@ -52,7 +54,9 @@ public class ListVariablesTest {
   @Test
   public void shouldListVariablesFunction5() {
     final Set<String> result = Set.of("z");
-    Expression expression = new Power(new Variable("z"), new Parenthesis(new Division(new Constant(1), new Constant(2))));
+    Expression expression =
+        new Power(
+            new Variable("z"), new Parenthesis(new Division(new Constant(1), new Constant(2))));
 
     Assertions.assertEquals(result, expression.getVariables());
   }
@@ -70,7 +74,9 @@ public class ListVariablesTest {
   @Test
   public void shouldListVariablesFunction8() {
     final Set<String> result = Set.of("i");
-    Expression expression = new Multiplication(new Parenthesis(new Substraction(new Constant(5), new Variable("i"))), new Constant(8));
+    Expression expression =
+        new Multiplication(
+            new Parenthesis(new Substraction(new Constant(5), new Variable("i"))), new Constant(8));
 
     Assertions.assertEquals(result, expression.getVariables());
   }

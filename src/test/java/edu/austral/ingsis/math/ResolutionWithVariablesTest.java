@@ -5,9 +5,8 @@ import edu.austral.ingsis.math.expressions.Variable;
 import edu.austral.ingsis.math.expressions.binaryoperation.*;
 import edu.austral.ingsis.math.expressions.unaryoperation.Module;
 import edu.austral.ingsis.math.expressions.unaryoperation.Parenthesis;
-import org.junit.jupiter.api.*;
-
 import java.util.Map;
+import org.junit.jupiter.api.*;
 
 public class ResolutionWithVariablesTest {
 
@@ -35,7 +34,9 @@ public class ResolutionWithVariablesTest {
   @Test
   public void shouldResolveFunction3() {
     final Double result = 12d;
-    Expression expression = new Multiplication(new Parenthesis(new Division(new Constant(9), new Variable("x"))), new Variable("y"));
+    Expression expression =
+        new Multiplication(
+            new Parenthesis(new Division(new Constant(9), new Variable("x"))), new Variable("y"));
     Map<String, Double> values = Map.of("x", 3d, "y", 4d);
 
     Assertions.assertEquals(result, expression.evaluate(values));
@@ -45,7 +46,9 @@ public class ResolutionWithVariablesTest {
   @Test
   public void shouldResolveFunction4() {
     final Double result = 27d;
-    Expression expression = new Power(new Parenthesis(new Division(new Constant(27), new Variable("a"))), new Variable("b"));
+    Expression expression =
+        new Power(
+            new Parenthesis(new Division(new Constant(27), new Variable("a"))), new Variable("b"));
     Map<String, Double> values = Map.of("a", 9d, "b", 3d);
 
     Assertions.assertEquals(result, expression.evaluate(values));
@@ -55,7 +58,9 @@ public class ResolutionWithVariablesTest {
   @Test
   public void shouldResolveFunction5() {
     final Double result = 6d;
-    Expression expression = new Power(new Variable("z"), new Parenthesis(new Division(new Constant(1), new Constant(2))));
+    Expression expression =
+        new Power(
+            new Variable("z"), new Parenthesis(new Division(new Constant(1), new Constant(2))));
     Map<String, Double> values = Map.of("z", 36d);
 
     Assertions.assertEquals(result, expression.evaluate(values));
@@ -85,7 +90,9 @@ public class ResolutionWithVariablesTest {
   @Test
   public void shouldResolveFunction8() {
     final Double result = 24d;
-    Expression expression = new Multiplication(new Parenthesis(new Substraction(new Constant(5), new Variable("i"))), new Constant(8));
+    Expression expression =
+        new Multiplication(
+            new Parenthesis(new Substraction(new Constant(5), new Variable("i"))), new Constant(8));
     Map<String, Double> values = Map.of("i", 2d);
 
     Assertions.assertEquals(result, expression.evaluate(values));
